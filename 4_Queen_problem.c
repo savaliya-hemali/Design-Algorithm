@@ -69,9 +69,9 @@ void display()
         for (j = 0; j < N; j++)
         {
             if (board[i][j])
-                printf(" 1 ");
+                printf(" Q ");
             else
-                printf(" 0 ");
+                printf(" . ");
         }
         printf("\n");
     }

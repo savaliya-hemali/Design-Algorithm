@@ -4,37 +4,34 @@
 
 int board[N][N] = {0};
 
+// Check whether queen can be placed
 int isSafe(int row, int col)
 {
     int i, j;
 
-    /* Check column */
+    // Check column
     for (i = 0; i < row; i++)
-        if (board[i][col] == 1)
+        if (board[i][col])
             return 0;
 
-    /* Check left diagonal */
-    for (i = row - 1, j = col - 1;
-         i >= 0 && j >= 0;
-         i--, j--)
-        if (board[i][j] == 1)
+    // Check upper-left diagonal
+    for (i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--)
+        if (board[i][j])
             return 0;
 
-    /* Check right diagonal */
-    for (i = row - 1, j = col + 1;
-         i >= 0 && j < N;
-         i--, j++)
-        if (board[i][j] == 1)
+    // Check upper-right diagonal
+    for (i = row - 1, j = col + 1; i >= 0 && j < N; i--, j++)
+        if (board[i][j])
             return 0;
 
     return 1;
 }
 
+// Solve the problem
 int solve(int row)
 {
     int col;
 
-    /* All queens placed */
     if (row == N)
         return 1;
 
@@ -47,7 +44,6 @@ int solve(int row)
             if (solve(row + 1))
                 return 1;
 
-            /* Backtracking */
             board[row][col] = 0;
         }
     }
@@ -55,7 +51,8 @@ int solve(int row)
     return 0;
 }
 
-void display()
+// Display chessboard
+void printBoard()
 {
     int i, j;
 
@@ -63,7 +60,10 @@ void display()
     {
         for (j = 0; j < N; j++)
         {
-            printf("%d ", board[i][j]);
+            if (board[i][j])
+                printf(" Q ");
+            else
+                printf(" . ");
         }
         printf("\n");
     }
@@ -72,14 +72,9 @@ void display()
 int main()
 {
     if (solve(0))
-    {
-        printf("Solution for 8 Queens:\n");
-        display();
-    }
+        printBoard();
     else
-    {
-        printf("No solution exists.\n");
-    }
+        printf("No solution exists.");
 
     return 0;
 }
