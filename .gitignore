@@ -1,7 +1,1 @@
-/4_Queen_problem.exe
-/8_Queen_problem.exe
-/queen_problem.exe
-/MultiStage_Graph_Dynamic_programming.exe
-/0_1_Knapsack_problem_Dynamic_programming.exe   
-/Prim's_algorithm.exe
-/Kruskal's_algorithm.exe
+*.exe
